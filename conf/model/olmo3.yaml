@@ -1,0 +1,5 @@
+# `if_key` selects the per-model keyword list inside task_config.json /
+# auto_formatted_tasks.json (used only by lrp / attn_diff / frame_cie / if_patching).
+# Those files have no OLMo entry, so lookups fall back to [task].
+name: allenai/Olmo-3-7B-Instruct
+if_key: olmo7b

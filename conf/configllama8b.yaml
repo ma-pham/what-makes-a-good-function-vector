@@ -1,0 +1,7 @@
+# thin config: everything shared lives in base.yaml, only the differences here
+defaults:
+  - base
+  - override /model: llama8b
+  - _self_
+
+device: cuda:0

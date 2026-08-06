@@ -1,0 +1,8 @@
+# thin config: everything shared lives in base.yaml, only the differences here
+defaults:
+  - base
+  - override /model: olmo3
+  - _self_
+
+device: cuda:0
+force_recompute_heads: true      # olmo head scores were never trusted; always redo

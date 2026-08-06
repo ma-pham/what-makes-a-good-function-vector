@@ -1,0 +1,40 @@
+# zero-shot-fv dependencies.
+#
+#   uv venv --python 3.11
+#   uv pip install -r requirements.txt
+#
+# The line below pulls the CUDA (cu128) build of torch; everything else resolves
+# from PyPI. Change cu128 to match your driver, or drop it for a CPU-only install.
+--extra-index-url https://download.pytorch.org/whl/cu128
+
+torch==2.7.0+cu128
+
+# transformers is held at 4.x because lxt (the LRP branch) cannot run on 5.x:
+# lxt.efficient imports find_pruneable_heads_and_indices, which 5.x removed, and
+# lxt 2.1 is the newest release. Nothing else needs 5.x -- CIE head scores were
+# verified bit-identical across 4.52.4 and 5.14.1 on Llama-3.2-3B/antonym, and
+# utils.load_gpt_model_and_tokenizer / if_patching._layer_values both handle the
+# two APIs (the dtype kwarg and the KV cache respectively).
+transformers==4.52.4
+# these two are downgrades from the current venv (0.22.2 / 1.23.0), forced by
+# transformers 4.52.4: tokenizers<0.22, huggingface-hub<1.0. Everything else below
+# is exactly what the live environment has.
+tokenizers==0.21.4
+huggingface-hub==0.36.2
+accelerate==1.14.0
+safetensors==0.8.0
+
+numpy==2.4.4
+pandas==3.0.3
+scipy==1.17.1          # plots/seed_variance.py: pearsonr / spearmanr
+scikit-learn==1.9.0    # utils.split_icl_dataset -> train_test_split
+matplotlib==3.11.0     # plots/*.py (Agg backend; seaborn is not used anywhere)
+tqdm==4.66.5
+loguru==0.7.3
+
+hydra-core==1.3.4      # run_all_tasks.py + conf/
+omegaconf==2.3.1
+
+# LRP attribution branch, imported lazily by lrp.py -- CIE / IF-patching runs work
+# even if this fails to install. Pulls zennit.
+lxt==2.1

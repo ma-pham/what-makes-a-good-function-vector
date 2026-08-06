@@ -1,0 +1,317 @@
+{
+    "antonym": {
+        "omit": false,
+        "llama3b": [
+            "opposite",
+            "antonym"
+        ]
+    },
+    "capitalize": {
+        "omit": false,
+        "llama3b": [
+            "title",
+            "title case",
+            "case"
+        ]
+    },
+    "capitalize_first_letter": {
+        "omit": false,
+        "llama3b": [
+            "letter"
+        ]
+    },
+    "capitalize_last_letter": {
+        "omit": false,
+        "llama3b": [
+            "pick",
+            "final letter",
+            "last letter"
+        ]
+    },
+    "country-capital": {
+        "omit": false,
+        "llama3b": [
+            "city",
+            "capital",
+            "world capitals"
+        ]
+    },
+    "country-currency": {
+        "omit": false,
+        "llama3b": [
+            "recognize national currencies",
+            "country",
+            "currency"
+        ]
+    },
+    "english-french": {
+        "omit": false,
+        "llama3b": [
+            "french"
+        ]
+    },
+    "english-german": {
+        "omit": false,
+        "llama3b": [
+            "german"
+        ]
+    },
+    "english-spanish": {
+        "omit": false,
+        "llama3b": [
+            "spanish"
+        ]
+    },
+    "landmark-country": {
+        "omit": false,
+        "llama3b": [
+            "country"
+        ]
+    },
+    "national_parks": {
+        "omit": false,
+        "llama3b": [
+            "preserve's",
+            "historic",
+            "national",
+            "location"
+        ]
+    },
+    "next_item": {
+        "omit": false,
+        "llama3b": [
+            "advance",
+            "next",
+            "move"
+        ]
+    },
+    "park-country": {
+        "omit": false,
+        "llama3b": [
+            "park",
+            "country"
+        ]
+    },
+    "present-past": {
+        "omit": false,
+        "llama3b": [
+            "tense",
+            "past tense",
+            "past"
+        ]
+    },
+    "prev_item": {
+        "omit": false,
+        "llama3b": [
+            "preceding",
+            "before",
+            "one",
+            "precedes"
+        ]
+    },
+    "product-company": {
+        "omit": false,
+        "llama3b": [
+            "organization",
+            "technology",
+            "company",
+            "developed"
+        ]
+    },
+    "singular-plural": {
+        "omit": false,
+        "llama3b": [
+            "plural"
+        ]
+    },
+    "synonym": {
+        "omit": false,
+        "llama3b": [
+            "interchangeable",
+            "comparable",
+            "synonym",
+            "means"
+        ]
+    },
+    "word_length": {
+        "omit": false,
+        "llama3b": [
+            "characters",
+            "count",
+            "letters"
+        ]
+    },
+    "alphabetically_last_3": {
+        "omit": false,
+        "llama3b": [
+            "order",
+            "alphabetically",
+            "alphabetized",
+            "alphabetical"
+        ]
+    },
+    "animal_v_object_3": {
+        "omit": false,
+        "llama3b": [
+            "animal",
+            "creature"
+        ]
+    },
+    "animal_v_object_5": {
+        "omit": false,
+        "llama3b": [
+            "animal",
+            "living",
+            "creature"
+        ]
+    },
+    "choose_first_of_3": {
+        "omit": false,
+        "llama3b": [
+            "list",
+            "first"
+        ]
+    },
+    "choose_first_of_5": {
+        "omit": false,
+        "llama3b": [
+            "first element",
+            "first"
+        ]
+    },
+    "choose_last_of_3": {
+        "omit": false,
+        "llama3b": [
+            "last",
+            "appears",
+            "item",
+            "three",
+            "final item"
+        ]
+    },
+    "choose_last_of_5": {
+        "omit": false,
+        "llama3b": [
+            "item",
+            "last",
+            "final"
+        ]
+    },
+    "choose_middle_of_3": {
+        "omit": false,
+        "llama3b": [
+            "second"
+        ]
+    },
+    "choose_middle_of_5": {
+        "omit": false,
+        "llama3b": [
+            "third",
+            "from",
+            "middle"
+        ]
+    },
+    "color_v_animal_3": {
+        "omit": false,
+        "llama3b": [
+            "element",
+            "animal",
+            "color"
+        ]
+    },
+    "color_v_animal_5": {
+        "omit": false,
+        "llama3b": [
+            "color"
+        ]
+    },
+    "concept_v_object_3": {
+        "omit": false,
+        "llama3b": [
+            "being",
+            "physical",
+            "object",
+            "concrete"
+        ]
+    },
+    "concept_v_object_5": {
+        "omit": false,
+        "llama3b": [
+            "feeling",
+            "descriptor",
+            "concrete"
+        ]
+    },
+    "conll2003_location": {
+        "omit": false,
+        "llama3b": [
+            "city",
+            "place",
+            "country",
+            "location"
+        ]
+    },
+    "conll2003_organization": {
+        "omit": false,
+        "llama3b": [
+            "company",
+            "entity",
+            "team",
+            "mentioned",
+            "name"
+        ]
+    },
+    "conll2003_person": {
+        "omit": false,
+        "llama3b": [
+            "name",
+            "person"
+        ]
+    },
+    "fruit_v_animal_3": {
+        "omit": false,
+        "llama3b": [
+            "product",
+            "represents",
+            "isolate",
+            "edible"
+        ]
+    },
+    "fruit_v_animal_5": {
+        "omit": false,
+        "llama3b": [
+            "fruit"
+        ]
+    },
+    "object_v_concept_3": {
+        "omit": false,
+        "llama3b": [
+            "tangible",
+            "object"
+        ]
+    },
+    "object_v_concept_5": {
+        "omit": false,
+        "llama3b": [
+            "object",
+            "thing",
+            "name",
+            "refers",
+            "choose"
+        ]
+    },
+    "verb_v_adjective_3": {
+        "omit": false,
+        "llama3b": [
+            "action",
+            "verb"
+        ]
+    },
+    "verb_v_adjective_5": {
+        "omit": false,
+        "llama3b": [
+            "verb",
+            "among"
+        ]
+    }
+}

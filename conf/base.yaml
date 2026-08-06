@@ -1,0 +1,111 @@
+defaults:
+  - model: llama3b
+  - _self_
+
+hydra:
+  job:
+    # keep the process CWD at the project root so `results/` and `conf/` resolve
+    # normally; Hydra still writes a snapshot of the resolved config per run
+    chdir: false
+
+# Where cached datasets, mean activations, head scores and eval artifacts live.
+# Honours FV_STORAGE_ROOT when set, so a copied bundle needs no config edit;
+# unset it and this resolves relative to the repo root.
+storage_root: ${oc.env:FV_STORAGE_ROOT,storage}
+results_dir: results
+prompt_type: instruction          # this sweep is instruction-only
+prompt_length: short
+device: cuda:0
+seed: 42
+test_split: 0.3
+batch_size: 4
+
+prefixes:
+  input: "Q:"
+  output: "A:"
+  instructions: ""
+separators:
+  input: "\n"
+  output: "\n\n"
+  instructions: "\n"
+
+# --- stage 2: mean activations ---
+total_activation_examples: 100
+force_recompute: false            # select / test-filter / mean-acts caches
+
+# --- stage 3: head scores ---
+methods: [cie]
+force_recompute_heads: false       # head-score caches (separate: cheap to redo)
+n_cie_trials: 25
+n_shapley_permutations: 10000
+shapley_coalition_size: 20
+lrp_trials_per_prompt: 5          # lrp / attn_diff / frame_cie / if_patching
+
+# --- stage 4: steered eval ---
+steering_method: dist             # "fv" or "dist"
+topk_heads: 20
+fv_edit_layer: 11
+eval_scales: [1.0]
+eval_max_examples: null
+use_test_filter: true
+
+# --- instruction selection ---
+n_best_instructions: 5
+instruction_baseline: equiprobable  # "empty" or "equiprobable"
+
+# Which keyword list the attention-based methods read. Both files ship with the
+# repo, so these stay repo-relative. "auto" tags their artifacts
+# _autoif so both variants coexist; the trial draw is unaffected, so a manual run
+# and an auto run at the same seed are directly comparable per task.
+if_source: manual                 # "manual" | "auto" | "none" (whole prompt)
+if_json_manual: task_config.json
+if_json_auto: auto_formatted_tasks.json
+
+# omitted: tasks the original pipeline failed with "insufficient shared train examples"
+# (marked by equiprobable_failure.json under storage_root): capitalize_second_letter,
+# lowercase_first_letter, lowercase_last_letter, next_capital_letter,
+# alphabetically_first_5, alphabetically_last_5, alphabetically_first_3
+tasks:
+  # abstractive
+  - antonym
+  - capitalize
+  - capitalize_first_letter
+  - capitalize_last_letter
+  - country-capital
+  - country-currency
+  - english-french
+  - english-german
+  - english-spanish
+  - landmark-country
+  - national_parks
+  - next_item
+  - park-country
+  - present-past
+  - prev_item
+  - product-company
+  - singular-plural
+  - synonym
+  - word_length
+  # extractive
+  - alphabetically_last_3
+  - animal_v_object_3
+  - animal_v_object_5
+  - choose_first_of_3
+  - choose_first_of_5
+  - choose_last_of_3
+  - choose_last_of_5
+  - choose_middle_of_3
+  - choose_middle_of_5
+  - color_v_animal_3
+  - color_v_animal_5
+  - concept_v_object_3
+  - concept_v_object_5
+  - conll2003_location
+  - conll2003_organization
+  - conll2003_person
+  - fruit_v_animal_3
+  - fruit_v_animal_5
+  - object_v_concept_3
+  - object_v_concept_5
+  - verb_v_adjective_3
+  - verb_v_adjective_5
